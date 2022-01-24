@@ -1,0 +1,31 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+
+
+cars:
+  ford:
+    ingester:
+      runCron: '0 * * ? * *' #each minute
+
+logging:
+  level.org.hibernate.SQL: DEBUG
+  level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    
+spring:
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:h2:mem:carsdb}
+    driverClassName: ${DATASOURCE_DRIVER:org.h2.Driver}
+    username: ${DATASOURCE_USER:sa}
+    password: ${DATASOURCE_PASSWORD:sa}
+  
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: create
+    database-platform: 'org.hibernate.dialect.H2Dialect'
+  
+  h2.console.enabled: true
+  h2.console.path: /h2-ui
+  h2.console.settings.web-admin-password: sa
+  h2.console.settings.trace: false
+  h2.console.settings.web-allow-others: true

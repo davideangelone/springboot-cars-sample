@@ -1,0 +1,127 @@
+<html lang="it">
+<head>
+    <title>Table Data Addition</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+</head>
+
+<body>
+  <div style="margin-top:5%;"></div>
+
+  <div class="container">
+    <table id="my-table">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+    </table>
+  </div>
+</body>
+
+<script type="text/javascript" class="init">
+
+$(document).ready(function() {
+
+	$('#my-table').bootstrapTable({
+			method:'GET',
+			dataType:'json',
+			cache: false,
+			striped: true,                              //Whether it is displayed
+			url:'http://localhost:8080/cars/get',
+			height: $(window).height() - 110,
+			width:$(window).width(),
+			showColumns:true,
+			minimumCountColumns:2,
+			uniqueId: "id",      //The unique identifier of each line, generally the primary key column
+			showExport: true,
+			exportDataType: 'all',
+			columns: [
+			/*
+			{
+				field: '',
+						title: 'Sort No.',
+						formatter: function (value, row, index) {
+						return index+1;
+				 }
+			},
+			*/
+			{
+				field : 'id',
+				title : 'ID',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'name',
+				title : 'Name',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'line',
+				title : 'Line',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'from',
+				title : 'From',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'to',
+				title : 'To',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'type',
+				title : 'Type',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'engine.power',
+				title : 'Engine Power',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'engine.type',
+				title : 'Engine Type',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'wheels.size',
+				title : 'Wheels Size',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			},
+			{
+				field : 'wheels.type',
+				title : 'Wheels Type',
+				align : 'center',
+				valign : 'middle',
+				sortable : true
+			}
+			]
+		});
+
+});
+
+</script>
